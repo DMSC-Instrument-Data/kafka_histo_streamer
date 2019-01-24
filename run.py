@@ -1,5 +1,7 @@
 #  -*- coding: utf-8 -*-
 
+kafka_server = "172.18.0.3:9092"
+
 # Ensure Python will be able to import files in this directory
 import sys, os
 FILEPATH = os.path.dirname(os.path.realpath(__file__))
@@ -11,7 +13,7 @@ from mantid.simpleapi import *
 
 StartLiveData(FromNow=True, FromTime=False, FromStartOfRun=False, UpdateEvery=5.0,
               Instrument="SANS2D", Listener="KafkaEventListener",
-              Address="172.18.0.3:9092", RunTransitionBehavior="Stop",
+              Address=kafka_server, RunTransitionBehavior="Stop",
               PreserveEvents=True, AccumulationMethod="Add",
               OutputWorkspace="test", AccumulationWorkspace="accum",
               ProcessingScriptFilename=FILEPATH + "/preprocess.py",
