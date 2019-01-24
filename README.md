@@ -61,7 +61,7 @@ The `docker-compose.yaml` in the top directory needs to be modified as follows:
 -    build: .
 ```
 
-```
+```diff
 -      KAFKA_MESSAGE_MAX_BYTES: 10000000
 +      KAFKA_MESSAGE_MAX_BYTES: 25000000
 ```
