@@ -4,7 +4,7 @@ This is a prototype to test and demonstrate Mantid being capable of live process
 
 ## Requirements
 
-Requires Mantid (currently has to be `nightly`).
+Requires Mantid. As of January 2019, it has to be `nightly`. Going forward, versions 4.0 and above should work.
 
 Virtualenv Python package recommended and used below (`$ pip install virtualenv`).
 
@@ -28,7 +28,7 @@ You will want to edit `run.py` and `postprocess.py` to configure `kafka_server` 
 
 ## Execution
 
-The Histo Streamer must be executed using `mantidpython`. There are currently no arguments:
+The Histo Streamer must be executed using `mantidpython`, which can be found in the bin directory of your Mantid installation (typically `/opt/Mantid/bin`). There are currently no arguments:
 
 ```
 user@host:~/kafka_histo_streamer $ mantidpython run.py
@@ -45,6 +45,8 @@ Recommended way of running a local demo:
 The Nexus Streamer is started first, to provide a Kafka server and event data. The Histo Streamer is then started to process events into histogram data. Finally, an instance of Mantid is used to consume and visualize the histogram data.
 
 #### Additional Setup
+
+The instructions below assume you are running on Linux. On Mac and Windows you would need to forward ports, since the Docker containers would be running in a virtual machine and the Docker network wouldn't be accessible directly. This is beyond the scope of this document.
 
 To run a local demo, you will need to [install Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/), as well as clone the ISIS Nexus Streamer repository:
 
