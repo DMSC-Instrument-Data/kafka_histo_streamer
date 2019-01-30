@@ -1,14 +1,13 @@
 #  -*- coding: utf-8 -*-
 
-kafka_server = "172.18.0.3:9092"
-
 # Ensure Python will be able to import files in this directory
 import sys, os
 FILEPATH = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(FILEPATH)
 
 from time import sleep
-from mantid.simpleapi import *
+from mantid.simpleapi import StartLiveData
+from config import kafka_server
 
 
 StartLiveData(FromNow=True, FromTime=False, FromStartOfRun=False, UpdateEvery=5.0,

@@ -3,17 +3,14 @@
 #   output = name of the processed output workspace
 # Temporary workspaces should be deleted
 
-# Where should these come from?
-kafka_server = '172.18.0.3:9092'
-kafka_topic = 'SANS2D_eventSum'
-
-# We don't actually need to do anything to the data
-mtd[output] = input
-
-
 from pykafka import KafkaClient
+from mantid.simpleapi import mtd
 from serializer import Workspace2DSerializer
+from config import kafka_server, kafka_topic
 
+
+# We don't actually need to do anything to the data, so pass through
+mtd[output] = input
 
 fbconv = Workspace2DSerializer(input)
 client = KafkaClient(hosts=kafka_server)
