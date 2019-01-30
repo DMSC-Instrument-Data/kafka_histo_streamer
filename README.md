@@ -24,7 +24,7 @@ $ git clone https://github.com/DMSC-Instrument-Data/kafka_histo_streamer
 ```
 
 
-You will want to edit `run.py` and `postprocess.py` to configure `kafka_server` and `kafka_topic` as needed. If you want to run a local demo, we will revisit what these should be set to below.
+You will want to edit `config.py` to configure `kafka_server` and `kafka_topic`. If you want to run a local demo, we will revisit what these should be set to below.
 
 ## Execution
 
@@ -101,7 +101,7 @@ $ docker inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress
 /isisnexusstreamerformantid_zookeeper_1 - 172.18.0.2
 ```
 
-The `..._kafka_1` IP is the one we want. The `kafka_server` variable at the top of `run.py` and `postprocess.py` needs to be set to this. The port is always `:9092`.
+The `..._kafka_1` IP is the one we want. The `kafka_server` variable in `config.py` needs to be set to this. The port is always `:9092`.
 
 With the IP set correctly and the ISIS Nexus Streamer running, start the histogramming service using `mantidpython`:
 
