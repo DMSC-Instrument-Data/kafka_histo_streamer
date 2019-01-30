@@ -125,3 +125,7 @@ StartLiveData(FromNow=True, FromTime=False, FromStartOfRun=False, UpdateEvery=5.
 After a startup period again, a workspace named `histo` will appear. You can view the data coming in by right-clicking it and selecting "View Instrument":
 
 ![video of full demo](media/full_demo_800px.gif)
+
+The same can be achieved when connecting from the integrated Instrument View in NICOS:
+
+![video of connecting from nicos](media/nicos_live_data_800px.gif)
