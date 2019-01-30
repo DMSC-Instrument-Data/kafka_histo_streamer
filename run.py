@@ -25,6 +25,11 @@ import sys, os
 FILEPATH = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(FILEPATH)
 
+if len(sys.argv) > 1:
+    print("Usage: mantidpython run.py")
+    print("For configuration options, edit config.py")
+    sys.exit(0)
+
 from time import sleep
 from mantid.simpleapi import StartLiveData
 from config import kafka_server
