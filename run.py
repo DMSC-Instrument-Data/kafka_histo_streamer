@@ -1,17 +1,43 @@
 #  -*- coding: utf-8 -*-
+# *********************************************************************
+# Kafka Histogram Re-streamer
+# Copyright (C) 2019 European Spallation Source ERIC
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Module authors:
+#   Michael Hart <michael.hart@stfc.ac.uk>
+# *********************************************************************
 
 # Ensure Python will be able to import files in this directory
 import sys, os
 FILEPATH = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(FILEPATH)
 
+if len(sys.argv) > 1:
+    print("Usage: mantidpython run.py")
+    print("For configuration options, edit config.py")
+    sys.exit(0)
+
 from time import sleep
-from mantid.simpleapi import *
+from mantid.simpleapi import StartLiveData
+from config import kafka_server
 
 
 StartLiveData(FromNow=True, FromTime=False, FromStartOfRun=False, UpdateEvery=5.0,
               Instrument="SANS2D", Listener="KafkaEventListener",
-              Address="172.18.0.3:9092", RunTransitionBehavior="Stop",
+              Address=kafka_server, RunTransitionBehavior="Stop",
               PreserveEvents=True, AccumulationMethod="Add",
               OutputWorkspace="test", AccumulationWorkspace="accum",
               ProcessingScriptFilename=FILEPATH + "/preprocess.py",
